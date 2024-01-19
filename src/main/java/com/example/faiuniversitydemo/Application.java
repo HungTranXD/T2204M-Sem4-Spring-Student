@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+//@RestController
 @SpringBootApplication
 public class Application {
-    @RequestMapping("/test")
-    String home() {
-        return "Hello World";
-    }
+//    @RequestMapping("/test")
+//    String home() {
+//        return "Hello World";
+//    }
 
     private final IStudentDAO studentDAO;
 
@@ -37,8 +37,8 @@ public class Application {
             System.out.println("Start project");
 
             // Save a sample student
-            Student sampleStudent = new Student("John", "Doe", "john.doe@example.com");
-            studentDAO.save(sampleStudent);
+//            Student sampleStudent = new Student("John", "Doe", "john.doe@example.com");
+//            studentDAO.save(sampleStudent);
 
 //            // Get a student by ID and print it
 //            int sampleStudentId = sampleStudent.getId();
@@ -56,6 +56,7 @@ public class Application {
 
             // Example: Delete the student
 //            studentDAO.delete(2L);
+
         };
     }
 

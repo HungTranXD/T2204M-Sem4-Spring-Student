@@ -20,6 +20,7 @@ public class StudentDAO implements IStudentDAO{
     @Override
     @Transactional
     public void save(Student student) {
+        System.out.println("Saving");
         entityManager.persist(student);
     }
 
