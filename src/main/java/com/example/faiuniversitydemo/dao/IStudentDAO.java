@@ -10,4 +10,10 @@ public interface IStudentDAO {
     List<Student> getStudents();
 
     Student getStudentById(int id);
+
+    void update(Student student);
+
+    void delete(Long id);
+
+//    this is a test
 }

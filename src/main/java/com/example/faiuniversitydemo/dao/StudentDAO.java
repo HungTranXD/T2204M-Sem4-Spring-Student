@@ -16,6 +16,7 @@ public class StudentDAO implements IStudentDAO{
     public StudentDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
     @Override
     @Transactional
     public void save(Student student) {
@@ -24,7 +25,7 @@ public class StudentDAO implements IStudentDAO{
 
     @Override
     public List<Student> getStudents() {
-        return null;
+        return entityManager.createQuery("SELECT s FROM Student s", Student.class).getResultList();
     }
 
     @Override
@@ -32,5 +33,18 @@ public class StudentDAO implements IStudentDAO{
         return entityManager.find(Student.class, id);
     }
 
+    @Override
+    @Transactional
+    public void update(Student student) {
+        entityManager.merge(student);
+    }
 
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        Student student = entityManager.find(Student.class, id);
+        if (student != null) {
+            entityManager.remove(student);
+        }
+    }
 }

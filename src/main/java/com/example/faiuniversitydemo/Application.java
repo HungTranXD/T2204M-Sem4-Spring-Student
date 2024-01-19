@@ -8,11 +8,18 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
 @SpringBootApplication
 public class Application {
+    @RequestMapping("/test")
+    String home() {
+        return "Hello World";
+    }
 
     private final IStudentDAO studentDAO;
 
@@ -30,21 +37,25 @@ public class Application {
             System.out.println("Start project");
 
             // Save a sample student
-            Student sampleStudent = new Student();
-            sampleStudent.setFirst_name("John");
-            sampleStudent.setLast_name("Doe");
-            sampleStudent.setEmail("john.doe@example.com");
+            Student sampleStudent = new Student("John", "Doe", "john.doe@example.com");
             studentDAO.save(sampleStudent);
 
-            // Get all students and print them
+//            // Get a student by ID and print it
+//            int sampleStudentId = sampleStudent.getId();
+//            Student foundStudent = studentDAO.getStudentById(sampleStudentId);
+//            System.out.println("Student found by ID " + sampleStudentId + ": " + foundStudent.toString());
+//
+//            // Get all students and print them
 //            List<Student> students = studentDAO.getStudents();
 //            System.out.println("All Students:");
 //            students.forEach(System.out::println);
+//
+//            // Update student
+//            foundStudent.setFirstName("Eric");
+//            studentDAO.update(foundStudent);
 
-            // Get a student by ID and print it
-            int sampleStudentId = 1;
-            Student foundStudent = studentDAO.getStudentById(sampleStudentId);
-            System.out.println("Student found by ID " + sampleStudentId + ": " + foundStudent.toString());
+            // Example: Delete the student
+//            studentDAO.delete(2L);
         };
     }
 
